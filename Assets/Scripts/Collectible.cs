@@ -6,6 +6,7 @@ public class Collectible : MonoBehaviour
     public static event Action OnCollected;
     public static int total;
 
+    public AudioSource coinSound;
     void Awake() => total++;
    
     // Update is called once per frame
@@ -18,6 +19,7 @@ public class Collectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            coinSound.Play();
             OnCollected?.Invoke();
             Destroy(gameObject);
         }
